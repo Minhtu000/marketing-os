@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+﻿import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { DataProvider } from "../../core/data/provider";
 import type {
@@ -73,5 +73,13 @@ export const seoExportProvider: DataProvider & {
   async getExportStatus() {
     const result = await readExport();
     return result.status;
+  },  async execute(action) {
+    return {
+      actionId: action.id,
+      status: "blocked",
+      message:
+        "Execution bridge is not connected yet. No external action was executed.",
+      executedAt: new Date().toISOString(),
+    };
   },
 };

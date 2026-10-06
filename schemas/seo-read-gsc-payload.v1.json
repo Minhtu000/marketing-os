@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "marketing-os/seo-read-gsc-payload.v1.json",
+  "title": "SEO GSC Read Payload v1",
+  "type": "object",
+  "additionalProperties": true
+}

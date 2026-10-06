@@ -1,0 +1,27 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "marketing-os/seo-read-ga4-payload.v1.json",
+  "title": "SEO GA4 Read Payload v1",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "property_id": {
+      "type": "string"
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    }
+  }
+}

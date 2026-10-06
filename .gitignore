@@ -4,3 +4,21 @@ out/
 *.log
 .backup-group*/
 next-env.d.ts
+# Runtime / local state
+.playwright-mcp/
+data/control-plane/
+processed/
+rejected/
+# Local backups
+*.backup-*
+*.bak
+*.before-debug
+*.before-detail
+*.pre-bridge
+# Local debug / test artifacts
+debug-*.json
+debug-*.mjs
+inspect-*.mjs
+marketing-os-*.js
+marketing-os-*.cjs
+test-playwright-*.mjs

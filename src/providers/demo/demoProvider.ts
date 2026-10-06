@@ -1,4 +1,4 @@
-import type { DataProvider } from "../../core/data/provider";
+﻿import type { DataProvider } from "../../core/data/provider";
 import type {
   ActivityEvent,
   Issue,
@@ -55,5 +55,13 @@ export const demoProvider: DataProvider = {
       { id: "evt-3", timestamp: minutesAgo(130), moduleId: "analytics", event: "Chua co ket noi du lieu", status: "info" },
       { id: "evt-4", timestamp: minutesAgo(300), moduleId: "content", event: "Cap nhat lich noi dung", status: "success" },
     ];
+  },  async execute(action) {
+    return {
+      actionId: action.id,
+      status: "blocked",
+      message:
+        "Execution bridge is not connected yet. No external action was executed.",
+      executedAt: new Date().toISOString(),
+    };
   },
 };

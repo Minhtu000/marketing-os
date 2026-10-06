@@ -1,4 +1,4 @@
-import type {
+﻿import type {
   ActivityEvent,
   Issue,
   Kpi,
@@ -13,4 +13,20 @@ export interface DataProvider {
   getIssues(): Promise<Issue[]>;
   getPriorities(): Promise<Priority[]>;
   getActivity(): Promise<ActivityEvent[]>;
+  execute(action: ControlAction): Promise<ControlResult>;
+}
+export interface ControlAction {
+  id: string;
+  moduleId: string;
+  type: string;
+  project?: string;
+  input?: Record<string, unknown>;
+  requestedBy?: string;
+}
+export interface ControlResult {
+  actionId: string;
+  status: "accepted" | "completed" | "failed" | "blocked";
+  message: string;
+  executedAt: string;
+  data?: Record<string, unknown>;
 }

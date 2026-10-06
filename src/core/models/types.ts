@@ -1,4 +1,4 @@
-export type ModuleId = "seo" | "gtm" | "content" | "analytics";
+﻿export type ModuleId = "seo" | "gtm" | "content" | "analytics";
 export type ModuleStatus = "available" | "planned";
 export type ConnectionStatus = "connected" | "not_connected";
 export type DataSource = "demo" | "live" | "none";
@@ -52,8 +52,26 @@ export interface ActivityEvent {
   event: string;
   status: ActivityStatus;
 }
-export type SeoExportStatus = "live" | "stale" | "partial" | "invalid" | "unavailable";
-
+export type SeoExportStatus =
+  | "live"
+  | "stale"
+  | "partial"
+  | "invalid"
+  | "unavailable";
+export interface HandoffInboxItem {
+  handoffId: string;
+  version: "1.0";
+  source: "claude_seo_os";
+  moduleId: "seo";
+  kind: "result" | "finding" | "recommendation" | "action_request";
+  createdAt: string;
+  actionId?: string;
+  title: string;
+  summary: string;
+  payload: Record<string, unknown>;
+  readOnly: true;
+  metadata?: Record<string, unknown>;
+}
 export interface DashboardSnapshot {
   providerName: string;
   lastUpdated: string;
@@ -63,6 +81,7 @@ export interface DashboardSnapshot {
   issues: Issue[];
   priorities: Priority[];
   activity: ActivityEvent[];
+  handoffs: HandoffInboxItem[];
 }
 export type Metric = Kpi & { moduleId?: ModuleId };
 export type Signal = Issue;
