@@ -14,9 +14,9 @@ import {
   METADATA_ACTION_TYPE,
 } from './metadata-action-contract';
 
-const state = (title: string) => ({
-  rendered_title: `${title} | Vuon Anh`,
-  cms_field_value: title,
+const state = (seoTitle: string) => ({
+  seo_title: seoTitle,
+  rendered_h1: 'Ban hoc sinh',
   parent_category: { id: '12', name: 'Ban hoc' },
   slug: 'ban-hoc-sinh',
   published: true,
@@ -26,9 +26,11 @@ const valid = (): Record<string, any> => ({
   url: '/ban-hoc-sinh',
   category_id: '188',
   proposed_title: 'Ban hoc sinh gia re',
+  expected_parent_id: '12',
+  expected_parent_name: 'Ban hoc',
   expected_before: state('Ban hoc sinh'),
   expected_after: state('Ban hoc sinh gia re'),
-  rollback_value: { cms_field_value: 'Ban hoc sinh' },
+  rollback_value: { seo_title: 'Ban hoc sinh' },
 });
 
 function codes(input: unknown): string[] {
@@ -86,7 +88,7 @@ test('legacy e2e input shape is blocked', () => {
 });
 
 test('rollback does not match expected_before', () => {
-  const i = valid(); i.rollback_value.cms_field_value = 'Something else';
+const i = valid(); i.rollback_value.seo_title = 'Something else';
   assert.deepEqual(codes(i), ['rollback_mismatch']);
 });
 
@@ -104,7 +106,7 @@ test('expected_after changes fields outside title', () => {
 });
 
 test('expected_after title must equal proposed_title and must differ from current', () => {
-  const a = valid(); a.expected_after.cms_field_value = 'Different';
+const a = valid(); a.expected_after.seo_title = 'Different';
   assert.ok(codes(a).includes('expected_after_inconsistent'));
   const b = valid(); b.proposed_title = 'Ban hoc sinh'; b.expected_after = state('Ban hoc sinh');
   assert.deepEqual(codes(b), ['expected_after_inconsistent']);
@@ -129,7 +131,7 @@ test('missing parent-category verification (before and after)', () => {
 });
 
 test('no autofill: missing state fields are violations, nothing is added', () => {
-  for (const f of ['rendered_title', 'cms_field_value', 'slug', 'published']) {
+ for (const f of ['seo_title', 'rendered_h1', 'slug', 'published']) {
     const i = valid(); delete i.expected_before[f];
     assert.ok(codes(i).includes('recipe_incomplete'), f);
     assert.equal(f in i.expected_before, false);
