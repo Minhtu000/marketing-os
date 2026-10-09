@@ -1,8 +1,0 @@
-﻿{
-  "request_id": "REQ-001",
-  "proposal_hash": "06770abfb47fdb3a5d73fb65b4736dab0ac6940c96b711b087f5b690e3142463",
-  "decision": "APPROVE",
-  "expires_at": "2026-12-31T23:59:59.000Z",
-  "key_id": "key_v7_master_2026",
-  "signature": "3045022100a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b20220"
-}

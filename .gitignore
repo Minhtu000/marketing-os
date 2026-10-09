@@ -22,3 +22,7 @@ inspect-*.mjs
 marketing-os-*.js
 marketing-os-*.cjs
 test-playwright-*.mjs
+
+# OOB Approval Records (Internal Data)
+src/lib/security/trusted_approvals/*.json
+!src/lib/security/trusted_approvals/*.example.json
