@@ -1,4 +1,4 @@
-import type {
+﻿import type {
   ActivityEvent,
   Issue,
   Kpi,
@@ -80,16 +80,14 @@ function mapHealth(
       dataSource: "none",
     };
   }
-
   return {
     moduleId: "seo",
     name: "SEO OS",
     status: "available",
     connection: "connected",
-    dataSource: "live",
+    dataSource: status === "live" ? "live" : "none",
   };
 }
-
 export function mapSeoExport(
   data: SeoExportFile,
   status: ExportStatus,
@@ -116,3 +114,5 @@ export function mapUnavailableSeoExport(): SeoExportResult {
     health: mapHealth({} as SeoExportFile, "unavailable"),
   };
 }
+
+

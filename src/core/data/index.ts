@@ -16,16 +16,7 @@ import "@/core/execution/register-adapters";
 const provider: DataProvider = {
   name: "SEO OS Export + Demo Data",
   async getLastUpdated() {
-    const [seoUpdated, demoUpdated] = await Promise.all([
-      seoExportProvider.getLastUpdated(),
-      demoProvider.getLastUpdated(),
-    ]);
-    return new Date(
-      Math.max(
-        new Date(seoUpdated).getTime(),
-        new Date(demoUpdated).getTime(),
-      ),
-    ).toISOString();
+    return seoExportProvider.getLastUpdated();
   },
   async getSystemHealth() {
     const [seoHealth, demoHealth] = await Promise.all([

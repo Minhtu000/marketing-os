@@ -83,3 +83,5 @@ export const seoExportProvider: DataProvider & {
     };
   },
 };
+
+function sanitizeAndVerifyEnvelopes(e: any[]): any[] { return Array.isArray(e) ? e.filter(i => { let env = i.envelope || i, p = env.payload || {}, a = i.action_type || env.action_type; if (a === 'seo.read.gsc' && (i.envelope_id?.startsWith('env-test') || p.test === true)) return false; if (a === 'seo.read.ga4' && !(env.provenance_verified === true || i.provenance_verified === true)) return false; return true; }) : []; }
