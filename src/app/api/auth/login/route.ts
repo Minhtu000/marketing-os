@@ -7,14 +7,12 @@ export async function POST(req: NextRequest) {
     const { username, password } = body;
     const expectedUser = process.env.ADMIN_USERNAME || "admin";
     const expectedPass = process.env.ADMIN_PASSWORD || "change_this_admin_password_immediately";
-    const userMatch = crypto.timingSafeEqual(
-      Buffer.from(username || ""),
-      Buffer.from(expectedUser)
-    );
-    const passMatch = crypto.timingSafeEqual(
-      Buffer.from(password || ""),
-      Buffer.from(expectedPass)
-    );
+    const userHash = crypto.createHash("sha256").update(username || "").digest();
+    const expUserHash = crypto.createHash("sha256").update(expectedUser).digest();
+    const passHash = crypto.createHash("sha256").update(password || "").digest();
+    const expPassHash = crypto.createHash("sha256").update(expectedPass).digest();
+    const userMatch = crypto.timingSafeEqual(userHash, expUserHash);
+    const passMatch = crypto.timingSafeEqual(passHash, expPassHash);
     if (!userMatch || !passMatch) {
       return NextResponse.json({ error: "INVALID_CREDENTIALS" }, { status: 401 });
     }
