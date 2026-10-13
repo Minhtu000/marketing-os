@@ -37,3 +37,8 @@ __pycache__/
 run_*.py
 seo-pipeline.test.js
 tests/test_v7_integration_offline.py
+
+# Local test & simulation scripts
+run_*.py
+seo-pipeline.test.js
+tests/test_v7_integration_offline.py
