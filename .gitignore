@@ -32,3 +32,8 @@ __pycache__/
 *.tsbuildinfo
 .env.local
 .env.*.local
+
+# Local test & simulation scripts
+run_*.py
+seo-pipeline.test.js
+tests/test_v7_integration_offline.py
