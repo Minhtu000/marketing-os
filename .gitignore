@@ -26,3 +26,9 @@ test-playwright-*.mjs
 # OOB Approval Records (Internal Data)
 src/lib/security/trusted_approvals/*.json
 !src/lib/security/trusted_approvals/*.example.json
+# Cache & Build artifacts
+__pycache__/
+*.pyc
+*.tsbuildinfo
+.env.local
+.env.*.local
