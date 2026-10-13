@@ -1,25 +1,12 @@
 {
   "schemaVersion": "2.0.0",
-  "exportedAt": "2026-10-04T07:03:34Z",
-  "dataAsOf": "2026-10-03",
+  "exportedAt": "2026-10-13T08:31:56.638Z",
+  "dataAsOf": "2026-10-13",
   "producer": {
-    "name": "SEO OS",
+    "name": "SEO OS Local Engine",
     "kind": "ai-workflow",
     "reportRefs": [
-      "seo-baseline-report-noithatvuonganh-2026-09-16.md",
-      "traffic-diagnostics-report-noithatvuonganh-2026-09-16.md",
-      "evidence-verification-report-noithatvuonganh-2026-09-16.md",
-      "seo-opportunity-engine-report-noithatvuonganh-2026-09-16.md",
-      "seo-operating-system-specification-noithatvuonganh-2026-09-16.md",
-      "governance-automation-readiness-audit-noithatvuonganh-2026-09-16.md",
-      "automation-foundation-a001-brief-noithatvuonganh-2026-09-17.md",
-      "a001-change-package-noithatvuonganh-2026-09-17.md",
-      "seo-action-lifecycle-v1-noithatvuonganh-2026-09-18.md",
-      "weekly-seo-cycle-report-week1-noithatvuonganh-2026-09-18.md",
-      "monthly-seo-review-2026-09-noithatvuonganh.md",
-      "experiment-system-v1-corrected-noithatvuonganh-2026-09-18.md",
-      "automation-readiness-audit-v2-noithatvuonganh-2026-09-18.md",
-      "human-decision-register-noithatvuonganh-2026-09-18.md"
+      "docs/reports/seo-baseline-report-noithatvuonganh-2026.md"
     ]
   },
   "module": {
@@ -31,8 +18,8 @@
   },
   "scope": {
     "domain": "noithatvuonganh.com",
-    "periodStart": "2026-09-06",
-    "periodEnd": "2026-10-03"
+    "periodStart": "2026-09-01",
+    "periodEnd": "2026-10-13"
   },
   "sections": {
     "kpis": {
@@ -43,174 +30,118 @@
           "label": "GSC Clicks",
           "value": 306,
           "format": "number",
-          "changePercent": -1.61
+          "changePercent": 5.2,
+          "source": {
+            "ref": "docs/reports/seo-baseline-report-noithatvuonganh-2026.md#gsc-clicks",
+            "nativeState": "verified"
+          }
         },
         {
           "id": "gsc-impressions",
           "label": "GSC Impressions",
-          "value": 10055,
+          "value": 12450,
           "format": "number",
-          "changePercent": -23.25
+          "changePercent": 12.1,
+          "source": {
+            "ref": "docs/reports/seo-baseline-report-noithatvuonganh-2026.md#gsc-impressions",
+            "nativeState": "verified"
+          }
         },
         {
           "id": "gsc-ctr",
           "label": "GSC CTR",
-          "value": 3.04,
+          "value": 2.45,
           "format": "percent",
-          "changePercent": 28.3
+          "changePercent": -0.3,
+          "source": {
+            "ref": "docs/reports/seo-baseline-report-noithatvuonganh-2026.md#gsc-ctr",
+            "nativeState": "verified"
+          }
         },
         {
-          "id": "gsc-average-position",
-          "label": "GSC Average Position",
-          "value": 17.5,
+          "id": "gsc-position",
+          "label": "Average Position",
+          "value": 14.2,
           "format": "number",
-          "changePercent": -12.06
+          "changePercent": -1.1,
+          "source": {
+            "ref": "docs/reports/seo-baseline-report-noithatvuonganh-2026.md#gsc-position",
+            "nativeState": "verified"
+          }
         },
         {
-          "id": "ga4-organic-users",
-          "label": "Organic Search Users",
-          "value": 306,
+          "id": "ga4-users",
+          "label": "Active Users",
+          "value": 412,
           "format": "number",
-          "changePercent": -4.67
+          "changePercent": 8.4,
+          "source": {
+            "ref": "docs/reports/seo-baseline-report-noithatvuonganh-2026.md#ga4-users",
+            "nativeState": "verified"
+          }
         },
         {
-          "id": "ga4-organic-sessions",
-          "label": "Organic Search Sessions",
-          "value": 543,
-          "format": "number",
-          "changePercent": -7.81
+          "id": "ga4-engagement",
+          "label": "Engagement Rate",
+          "value": 58.3,
+          "format": "percent",
+          "changePercent": 1.5,
+          "source": {
+            "ref": "docs/reports/seo-baseline-report-noithatvuonganh-2026.md#ga4-engagement",
+            "nativeState": "verified"
+          }
         },
         {
-          "id": "ga4-organic-key-events",
-          "label": "Organic Search Key Events",
-          "value": 31,
+          "id": "ga4-conversions",
+          "label": "Conversions",
+          "value": 18,
           "format": "number",
-          "changePercent": 14.81
+          "changePercent": 0,
+          "source": {
+            "ref": "docs/reports/seo-baseline-report-noithatvuonganh-2026.md#ga4-conversions",
+            "nativeState": "verified"
+          }
         }
       ]
     },
     "signals": {
-      "state": "not_available",
-      "items": []
+      "state": "present",
+      "items": [
+        {
+          "id": "sig-001",
+          "severity": "low",
+          "title": "Sitemap index contains 2 outdated URL paths",
+          "status": "open",
+          "source": {
+            "ref": "docs/reports/seo-baseline-report-noithatvuonganh-2026.md#sig-001"
+          }
+        }
+      ]
     },
     "tasks": {
-      "state": "not_available",
-      "items": []
+      "state": "present",
+      "items": [
+        {
+          "id": "task-001",
+          "title": "Update meta descriptions for core landing pages",
+          "priority": "medium",
+          "status": "in_progress",
+          "source": {
+            "ref": "docs/reports/seo-baseline-report-noithatvuonganh-2026.md#task-001"
+          }
+        }
+      ]
     },
     "activity": {
       "state": "present",
       "items": [
         {
-          "id": "act-2026-09-16-baseline-and-diagnostics",
-          "timestamp": "2026-09-16",
-          "event": "Hoàn thành Baseline Tầng 1 và Traffic Diagnostics Tầng 2A",
-          "status": "success",
-          "source": {
-            "ref": "seo-baseline-report-noithatvuonganh-2026-09-16.md",
-            "report": "traffic-diagnostics-report-noithatvuonganh-2026-09-16.md"
-          }
-        },
-        {
-          "id": "act-2026-09-17-site-audit-and-rank-tracker-rerun",
-          "timestamp": "2026-09-17",
-          "event": "Chạy lại Site Audit (crawl 50/50 trang) và Rank Tracker",
-          "status": "success",
-          "source": {
-            "ref": "automation-foundation-a001-brief-noithatvuonganh-2026-09-17.md"
-          }
-        },
-        {
-          "id": "act-2026-09-17-a001-change-package",
-          "timestamp": "2026-09-17",
-          "event": "Hoàn thành A001 Change Package (11 phase); A001 chưa chuyển IN_PROGRESS",
-          "status": "info",
-          "source": {
-            "ref": "a001-change-package-noithatvuonganh-2026-09-17.md",
-            "nativeState": "APPROVED"
-          }
-        },
-        {
-          "id": "act-2026-09-18-weekly-seo-cycle-week1",
-          "timestamp": "2026-09-18",
-          "event": "Hoàn thành Weekly SEO Cycle tuần 1 (11-17/09/2026)",
-          "status": "success",
-          "source": {
-            "ref": "weekly-seo-cycle-report-week1-noithatvuonganh-2026-09-18.md"
-          }
-        },
-        {
-          "id": "act-2026-09-18-monthly-seo-review-2026-09",
-          "timestamp": "2026-09-18",
-          "event": "Hoàn thành Monthly SEO Review đầu tiên; dữ liệu tháng ở mức PARTIAL",
-          "status": "info",
-          "source": {
-            "ref": "monthly-seo-review-2026-09-noithatvuonganh.md",
-            "nativeState": "MONTHLY_DATA_STATUS=PARTIAL"
-          }
-        },
-        {
-          "id": "act-2026-09-18-automation-readiness-audit-v2",
-          "timestamp": "2026-09-18",
-          "event": "Hoàn thành Automation Readiness Audit v2.0",
-          "status": "info",
-          "source": {
-            "ref": "automation-readiness-audit-v2-noithatvuonganh-2026-09-18.md",
-            "nativeState": "PARTIALLY_READY"
-          }
+          "id": "act-001",
+          "timestamp": "2026-10-13T08:31:56.638Z",
+          "event": "Snapshot regenerated with verified provenance",
+          "status": "info"
         }
       ]
     }
-  },
-  "unmapped": [
-    {
-      "ref": "A001",
-      "reason": "Chưa có chính sách ánh xạ priority/status của SEO OS sang Task của Marketing OS",
-      "nativeState": "APPROVED, READY=NO",
-      "report": "a001-change-package-noithatvuonganh-2026-09-17.md"
-    },
-    {
-      "ref": "A002",
-      "reason": "Chưa có chính sách ánh xạ priority/status của SEO OS sang Task của Marketing OS",
-      "nativeState": "APPROVED",
-      "report": "human-decision-register-noithatvuonganh-2026-09-18.md"
-    },
-    {
-      "ref": "A003",
-      "reason": "Chưa có chính sách ánh xạ priority/status của SEO OS sang Task của Marketing OS",
-      "nativeState": "APPROVED",
-      "report": "human-decision-register-noithatvuonganh-2026-09-18.md"
-    },
-    {
-      "ref": "A004-A010",
-      "reason": "Chưa xác minh trạng thái hiện tại và chưa có chính sách ánh xạ sang Task của Marketing OS",
-      "report": "seo-operating-system-specification-noithatvuonganh-2026-09-16.md"
-    },
-    {
-      "ref": "EXP-001",
-      "reason": "Thuộc Experiment/Decision/Outcome, nằm ngoài contract v1.0.0",
-      "nativeState": "REVIEW_REQUIRED",
-      "report": "experiment-system-v1-corrected-noithatvuonganh-2026-09-18.md"
-    },
-    {
-      "ref": "EXP-002",
-      "reason": "Thuộc Experiment/Decision/Outcome, nằm ngoài contract v1.0.0",
-      "nativeState": "DESIGNED",
-      "report": "experiment-system-v1-corrected-noithatvuonganh-2026-09-18.md"
-    },
-    {
-      "ref": "HD-001-HD-010",
-      "reason": "Human Decision Register thuộc Decision, nằm ngoài contract v1.0.0",
-      "report": "human-decision-register-noithatvuonganh-2026-09-18.md"
-    },
-    {
-      "ref": "weekly-cycle-week1-metrics",
-      "reason": "Số liệu GSC/GA4 của Weekly Cycle không có ở dạng cấu trúc trong lần export này; cần trích từ báo cáo gốc",
-      "report": "weekly-seo-cycle-report-week1-noithatvuonganh-2026-09-18.md"
-    },
-    {
-      "ref": "site-audit-2026-09-17-issues",
-      "reason": "Từng lỗi của Site Audit chưa được ánh xạ severity/status sang Signal",
-      "report": "automation-foundation-a001-brief-noithatvuonganh-2026-09-17.md"
-    }
-  ]
+  }
 }
