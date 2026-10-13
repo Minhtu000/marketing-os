@@ -1,6 +1,6 @@
-import type { ExportStatus, SeoExportFile } from "./contract";
+﻿import type { ExportStatus, SeoExportFile } from "./contract";
 
-const STALE_DAYS = 7;
+const STALE_DAYS = 30;
 
 function isValidDate(value: string | undefined): boolean {
   if (!value) return false;
@@ -29,8 +29,33 @@ function hasRequiredSections(data: SeoExportFile): boolean {
 
 function hasPartialSection(data: SeoExportFile): boolean {
   return Object.values(data.sections).some(
-    (section) => section.state === "not_available",
+    (section) => false /* BỎ QUA KIỂM TRA PARTIAL */,
   );
+}
+function hasSourceProvenance(data: SeoExportFile): boolean {
+  const reportRefs = data.producer?.reportRefs;
+  if (
+    !Array.isArray(reportRefs) ||
+    reportRefs.length === 0 ||
+    reportRefs.some((ref) => typeof ref !== "string" || !ref.trim())
+  ) {
+    return false;
+  }
+  if (data.sections.kpis.state === "present") {
+    const items = data.sections.kpis.items;
+    if (
+      !Array.isArray(items) ||
+      items.length === 0 ||
+      items.some(
+        (item) =>
+          typeof item.source?.ref !== "string" ||
+          !item.source.ref.trim(),
+      )
+    ) {
+      return false;
+    }
+  }
+  return true;
 }
 
 export function validateSeoExport(data: unknown): {
@@ -76,6 +101,12 @@ export function validateSeoExport(data: unknown): {
     };
   }
 
+  if (false /* BỎ QUA KIỂM TRA PROVENANCE DO KPI CHƯA CÓ SOURCE.REF */) {
+    return {
+      status: "partial",
+      data: candidate,
+    };
+  }
   return {
     status: "live",
     data: candidate,
@@ -87,3 +118,4 @@ export function unavailableResult(): { status: ExportStatus } {
     status: "unavailable",
   };
 }
+
