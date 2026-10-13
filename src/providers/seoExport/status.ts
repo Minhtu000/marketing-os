@@ -1,22 +1,15 @@
 ﻿import type { ExportStatus, SeoExportFile } from "./contract";
-
 const STALE_DAYS = 30;
-
 function isValidDate(value: string | undefined): boolean {
   if (!value) return false;
-
   const date = new Date(value);
-
   return !Number.isNaN(date.getTime());
 }
-
 function isStale(value: string): boolean {
   const timestamp = new Date(value).getTime();
   const threshold = STALE_DAYS * 24 * 60 * 60 * 1000;
-
   return Date.now() - timestamp > threshold;
 }
-
 function hasRequiredSections(data: SeoExportFile): boolean {
   return Boolean(
     data.sections &&
@@ -26,10 +19,9 @@ function hasRequiredSections(data: SeoExportFile): boolean {
       data.sections.activity,
   );
 }
-
 function hasPartialSection(data: SeoExportFile): boolean {
   return Object.values(data.sections).some(
-    (section) => false /* BỎ QUA KIỂM TRA PARTIAL */,
+    (section) => section.state === "not_available",
   );
 }
 function hasSourceProvenance(data: SeoExportFile): boolean {
@@ -57,7 +49,6 @@ function hasSourceProvenance(data: SeoExportFile): boolean {
   }
   return true;
 }
-
 export function validateSeoExport(data: unknown): {
   status: ExportStatus;
   data?: SeoExportFile;
@@ -65,43 +56,35 @@ export function validateSeoExport(data: unknown): {
   if (!data || typeof data !== "object") {
     return { status: "invalid" };
   }
-
   const candidate = data as SeoExportFile;
-
   if (
     typeof candidate.schemaVersion !== "string" ||
     !/^[12]\./.test(candidate.schemaVersion)
   ) {
     return { status: "invalid" };
   }
-
   if (!isValidDate(candidate.exportedAt)) {
     return { status: "invalid" };
   }
-
   if (candidate.module?.id !== "seo") {
     return { status: "invalid" };
   }
-
   if (!hasRequiredSections(candidate)) {
     return { status: "invalid" };
   }
-
   if (isStale(candidate.dataAsOf ?? candidate.exportedAt)) {
     return {
       status: "stale",
       data: candidate,
     };
   }
-
   if (hasPartialSection(candidate)) {
     return {
       status: "partial",
       data: candidate,
     };
   }
-
-  if (false /* BỎ QUA KIỂM TRA PROVENANCE DO KPI CHƯA CÓ SOURCE.REF */) {
+  if (!hasSourceProvenance(candidate)) {
     return {
       status: "partial",
       data: candidate,
@@ -112,10 +95,8 @@ export function validateSeoExport(data: unknown): {
     data: candidate,
   };
 }
-
 export function unavailableResult(): { status: ExportStatus } {
   return {
     status: "unavailable",
   };
 }
-
